@@ -30,34 +30,34 @@ Feel free to use any of these bots, will keep them updated. They're written in p
      
 #Optionsbot
 
-Bot that respons to user requests with filtered options data provided by syncretism.io
+    Bot that respons to user requests with filtered options data provided by syncretism.io
 
-**Done**
+    **Done**
 
-> Request json objects from the syncretism.io API
+    > Request json objects from the syncretism.io API
 
-**To do**
+    **To do**
 
-> Determine best way to filter the json data
+    > Determine best way to filter the json data
 
-> Determine ideal ASCII table format for both desktop and mobile
+    > Determine ideal ASCII table format for both desktop and mobile
 
-> Implement user requests from a server, with flags that allow for viewing different filtering
+    > Implement user requests from a server, with flags that allow for viewing different filtering
 
  
 #Sentiment bot
  
- Bot that parses comments/posts from reddit and determines public sentiment for stocks
+     Bot that parses comments/posts from reddit and determines public sentiment for stocks
  
- **To do**
+     **To do**
  
- >Determine how to efficiently request data from reddit
+    >Determine how to efficiently request data from reddit
  
- >Determine how to parse the comments/posts for important data
+    >Determine how to parse the comments/posts for important data
  
- >Filter the data to determine sentiment
+    >Filter the data to determine sentiment
  
- >In short, all of the backend analysis needs to be done. Frontend communication with discord can build off of memebot and options bot
+    >In short, all of the backend analysis needs to be done. Frontend communication with discord can build off of memebot and options bot
     
     
     
