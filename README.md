@@ -1,3 +1,3 @@
-#Discord Bots
-
-#Github Documentation TBD
+#Discord Bots Main Folder
+ 
+#TBD Documentation
