@@ -68,7 +68,7 @@ async def on_message(message):
             await message.channel.send(output)
 
 
-if sys.argv[1] == 'dev':
+if len(sys.argv) > 1 and sys.argv[1] == 'dev':
     print('Running [dev] optionsbot')
     client.run(os.getenv('TOKEN_DEV'))
 else:
