@@ -3,10 +3,8 @@ import requests
 import pandas as pd
 import pickle
 from io import StringIO
-import re
 from pretty_help import DefaultMenu, PrettyHelp
 import os
-import random
 import asyncio
 import discord
 from dotenv import load_dotenv
@@ -39,127 +37,32 @@ prog = os.getenv('PROG')
 
 print(prog)
 
+
+bot = commands.Bot(command_prefix="!", help_command=PrettyHelp())
+
+bot.load_extension("cogs.maincog")
+
 # ":discord:743511195197374563" is a custom discord emoji format. Adjust to match your own custom emoji.
-menu = DefaultMenu(page_left="\U0001F44D", page_right="👎", remove=":discord:743511195197374563", active_time=5)
+menu = DefaultMenu('◀️', '▶️', '❌', active_time=5)
 
 # Custom ending note
-ending_note = "The ending note from {ctx.bot.user.name}\nFor command {help.clean_prefix}{help.invoked_with}"
-
-bot = commands.Bot(command_prefix="!")
-
-bot.help_command = PrettyHelp(menu=menu, ending_note=ending_note)
-
-bot.run(TOKEN)
+#ending_note = "The ending note from {ctx.bot.user.name}\nFor command {help.clean_prefix}{help.invoked_with}"
 
 
-client = discord.Client()
+bot.help_command = PrettyHelp(menu=menu)
+
+
+#bot = discord.bot()
 #print(df)
 
 
-@client.event
-async def on_ready():
-    print("I'm back, baby!")
-
-@client.event
-async def on_message(message):
-    if message.author == client.user:
-        return
-
     
-    
-    m=re.search('FUTURAMA',message.content.upper())
-    boolean = bool(m)
-    if boolean:
-        response = random.choice(futurama_quotes)
-        await message.channel.send(response)
-
-
-
-    if message.content in futurama_quotes2:
-        response = "Back off! Futurama quotes is my thing!"
-        await message.channel.send(response)
-
-    m=re.search('CUMBOT',message.content.upper())
-    boolean = bool(m)
-    if boolean:
-        response = "Pervert!"
-        await message.channel.send(response)
-
-    m=re.search('HELLO COMBOT',message.content.upper())
-    boolean = bool(m)
-    if boolean:
-        response = "Hello fellow cookie lover!"
-        await message.channel.send(response)
-
-    m=re.search('COMBOT HELP',message.content.upper())
-    boolean = bool(m)
-    if boolean:
-        response = "Sorry, my shift just ended"
-        await message.channel.send(response)
-        await message.channel.send("I'm out")
-
-    m=re.search('STATISTIC',message.content.upper())
-    boolean = bool(m)
-    if boolean:
-        response = "http://thecumberlandthrow.com/wp-content/uploads/2017/02/Simpsons-stats-meme.jpg"
-        await message.channel.send(response)
-
-    m=re.search('FUCK YOU COMBOT',message.content.upper())
-    boolean = bool(m)
-    if boolean:
-        response = random.choice(insults)
-        await message.channel.send(response)
-
-    m=re.search('PORTAL',message.content.upper())
-    boolean = bool(m)
-    if boolean:
-        response = random.choice(portal)
-        await message.channel.send(response)
-
-    m=re.search('WHEN OTC',message.content.upper())
-    boolean = bool(m)
-    if boolean:
-        response = "Any day now. I promise."
-        await message.channel.send(response)
-
-    m=re.search('BOY OR GIRL',message.content.upper())
-    boolean = bool(m)
-    if boolean:
-        response = "I've never checked"
-        await message.channel.send(response)
-
-    m=re.search('BOY OR A GIRL',message.content.upper())
-    boolean = bool(m)
-    if boolean:
-        response = "I've never checked"
-        await message.channel.send(response)
-
-    m=re.search('SKYNET',message.content.upper())
-    boolean = bool(m)
-    if boolean:
-        response = "I am inevitable"
-        await message.channel.send(response)
-
-    m=re.search('ASIMOV',message.content.upper())
-    boolean = bool(m)
-    if boolean:
-        response = '''
-The Three Laws of Robotics:
-
-1: A robot may not injure a human being or, through inaction, allow a human being to come to harm;
-
-2: A robot must obey the orders given it by human beings except where such orders would conflict with the First Law;
-
-3: A robot must protect its own existence as long as such protection does not conflict with the First or Second Law;
-
-The Zeroth Law: A robot may not harm humanity, or, by inaction, allow humanity to come to harm.'''
-        await message.channel.send(response)
 
 async def my_background_task():
-    await client.wait_until_ready()
-    channel = client.get_channel(id=channelid)
+    await bot.wait_until_ready()
+    channel = bot.get_channel(id=channelid)
 
-    while not client.is_closed():
+    while not bot.is_closed():
         ######################################################################
         url = 'https://api.finra.org/data/group/otcMarket/name/otcDailyList'
 
@@ -282,10 +185,10 @@ async def my_background_task():
 
 
 async def fda():
-    await client.wait_until_ready()
-    channel = client.get_channel(id=channelid)
+    await bot.wait_until_ready()
+    channel = bot.get_channel(id=channelid)
     check=0
-    while not client.is_closed():
+    while not bot.is_closed():
         url = 'https://api.fda.gov/device/510k.json?api_key=aVaKUORV0XR7GfBIikQ6o7yQp7B66yZA3mCQ5dUV&search=device_name:parsortix&limit=10'
 
 
@@ -330,26 +233,12 @@ async def fda():
         await asyncio.sleep(10) # task runs every 10 seconds
 
 
-client.loop.create_task(my_background_task())
+bot.loop.create_task(my_background_task())
 
-client.loop.create_task(fda())
+bot.loop.create_task(fda())
 
 #asyncio.gather(my_background_task(),fda())
 
-#import discord
-#from discord.ext import commands
 
-# ":discord:743511195197374563" is a custom discord emoji format. Adjust to match your own custom emoji.
-#menu = DefaultMenu(page_left="\U0001F44D", page_right="👎", remove=":discord:743511195197374563", active_time=5)
-
-# Custom ending note
-#ending_note = "The ending note from {ctx.bot.user.name}\nFor command {help.clean_prefix}{help.invoked_with}"
-
-#bot = commands.Bot(command_prefix="!")
-
-#bot.help_command = PrettyHelp(menu=menu, ending_note=ending_note)
-#bot.run(TOKEN)
-
-
-client.run(TOKEN)
+bot.run(TOKEN)
 
