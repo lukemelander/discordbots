@@ -5,15 +5,13 @@ async def show_help(channel):
     desc = '''
 `O <ticker> <option> <params>...` in any order
 
-> **<ticker>** - any stock that is currently on the market (verified by yahoo finance)
+**<ticker>** - any stock that is currently on the market (verified by yahoo finance)
 
-> **<option>** - `call` or `put`
+**<option>** - `call` or `put`
 
 **<params>** - possible paramters include:
 > `diff <number>` - this is the strike difference (%) of the option from the current stock trading value
-
 > `high <iv or expiry or prem>` - sort the results from highest to lowest for IV, Expiration, Premium
-
 > `low <iv or expiry or prem>` - sort the results from lowest to highest for IV, Expiration, Premium
 
 E.g. `O spce call diff 50 low iv` - show me all SPCE calls with strikes within 50\% of the current stock value and sort from lowest to highest IV
