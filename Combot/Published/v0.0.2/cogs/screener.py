@@ -43,6 +43,8 @@ class Screeners(commands.Cog, name= 'Screener'):
             response = response[0:50]
             #print(response.columns.values)
             response = response[["Insider Trading", "Date", "Transaction", "#Shares"]]
+            
+            response['Insider Trading'] = response['Insider Trading'].str.slice(0, 22)
 
             mout = '```\n'
             #mout += '             Insider     Date  Trans.   Shares\n'
