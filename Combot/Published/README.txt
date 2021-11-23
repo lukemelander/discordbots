@@ -4,4 +4,4 @@ v0.0.1 - Initial setup. Features included OTC notification and FDA notification
 
 v0.0.2 - Added integration with finfiz.
        - Changed to using COGS
-       - Added calls for screener, news, and insider
+       - Added calls for screener, news, insider, and price targets
