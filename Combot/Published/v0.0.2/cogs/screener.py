@@ -203,7 +203,7 @@ class Screeners(commands.Cog, name= 'Screener'):
             else:
                 response = pd.json_normalize(response)
                 response = pd.DataFrame(response)
-                print(response)
+                #print(response)
 
 
 
