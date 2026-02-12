@@ -7,3 +7,5 @@ v0.0.2 - Added integration with finfiz.
        - Added calls for screener, news, insider, and price targets
 
 v0.0.3 - Added integration with the OpenSea API
+
+v0.1.0 - Started using AI. Added a cat/dog command to give random dog and cat pics as well as various other meaningless little changes. 
