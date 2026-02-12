@@ -1,0 +1,7 @@
+discord.py
+requests
+pandas
+python-dotenv
+pytz
+discord-pretty-help
+finviz
